@@ -25,6 +25,24 @@ const AuthPage: React.FC = () => {
     setError('');
   };
 
+  const handleLogin = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: "your-test-email@example.com",
+        password: "your-test-password",
+      });
+
+      if (error) {
+        console.error("Supabase Login Error:", error.message); // Logs specific issue
+        return;
+      }
+
+      console.log("Logged In:", data.user); // Should show user object
+    } catch (err) {
+      console.error("Unexpected error:", err);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);

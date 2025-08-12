@@ -1,6 +1,12 @@
-# Logs
-logs
-*.log
+{"error": "invalid_grant", "...": "...."}
+node_modules
+
+// Clear Supabase session
+await supabase.auth.signOut().catch(console.error);
+
+// Clear all localStorage/sessionStorage related to auth
+localStorage.removeItem('sb-uaddulpqkjmweamixbeq-auth-token');
+sessionStorage.clear();
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
